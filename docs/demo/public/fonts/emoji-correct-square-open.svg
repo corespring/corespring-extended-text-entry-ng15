@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "public/images/components-assets/feedback/emoji-correct-square-open.svg";

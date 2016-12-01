@@ -1,0 +1,11 @@
+{
+  "name": "corespring-extended-text-entry-ng15",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.js",
+  "dependencies": {
+    "corespring-legacy-extended-text-entry": "corespring/corespring-legacy-extended-text-entry",
+    "less": "^2.7.1",
+    "lodash": "^4.15.0"
+  }
+}

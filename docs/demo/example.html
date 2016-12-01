@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="pie.js" type="text/javascript"></script>
+    <script src="controllers.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      window.pie = window.pie || {};
+      window.pie.env = {mode: 'gather'};
+      window.pie.model = {'pies':[{'id':'1','pie':{'name':'corespring-extended-text-entry-ng15','version':'1.0.0'},'feedback':{'feedbackType':'default'},'model':{'config':{'expectedLength':'100','expectedLines':'5'}},'minimumWidth':100}]};
+      window.pie.session = [];
+      
+      document.addEventListener('pie.player-ready', function(event){
+        var player = event.target;
+        var pieController = new pie.Controller(window.pie.model, window['321231ee72ca381cc72ccc538a5e5bf6']);
+        
+        player.controller = pieController;
+        player.env = window.pie.env;
+        player.session = window.pie.session;
+        
+        var panel = document.querySelector('pie-control-panel');
+        panel.env = window.pie.env;
+        
+        pieController.getLanguages().then(function(l) {
+          panel.languages = l;
+        });
+      
+        panel.addEventListener('envChanged', function(event){
+          
+          player.env = event.target.env;
+          
+          if (event.target.env.mode === 'evaluate') {
+            player.getOutcome().then(function(outcome) {
+              panel.score = ' Score: ' + outcome.summary.percentage + '% Points: ' + outcome.summary.points + '/' + outcome.summary.maxPoints;
+            });
+          } else {
+            panel.score = '';
+          }
+      
+        });
+      });
+      
+    </script>
+  </head>
+  <body>
+    <pie-control-panel></pie-control-panel>
+    <pie-player><corespring-extended-text-entry-ng15 pie-id="1"></corespring-extended-text-entry-ng15></pie-player>
+  </body>
+</html>

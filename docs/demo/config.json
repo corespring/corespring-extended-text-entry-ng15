@@ -1,0 +1,21 @@
+{
+  "pies": [
+    {
+      "id": "1",
+      "pie": {
+        "name": "corespring-extended-text-entry-ng15",
+        "version": "1.0.0"
+      },
+      "feedback": {
+        "feedbackType": "default"
+      },
+      "model": {
+        "config": {
+          "expectedLength": "100",
+          "expectedLines": "5"
+        }
+      },
+      "minimumWidth": 100
+    }
+  ]
+}
