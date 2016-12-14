@@ -1,11 +1,14 @@
 {
-  "pies": [
+  "langs": [
+    "en-US"
+  ],
+  "elements": {
+    "corespring-extended-text-entry-ng15": "../.."
+  },
+  "models": [
     {
       "id": "1",
-      "pie": {
-        "name": "corespring-extended-text-entry-ng15",
-        "version": "1.0.0"
-      },
+      "element": "corespring-extended-text-entry-ng15",
       "feedback": {
         "feedbackType": "default"
       },
