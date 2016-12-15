@@ -6,9 +6,7 @@ The component uses the same model as the legacy component apart from the additio
 ## Demo
 
  ```
-   cd docs/demo 
-   pie pack-question --buildExample --keepBuildAssets --clean=true 
-   chrome example.html     
+   pie info  
  ```  
   
 
