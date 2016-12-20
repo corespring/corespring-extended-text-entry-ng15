@@ -15,7 +15,8 @@
       "model": {
         "config": {
           "expectedLength": "100",
-          "expectedLines": "5"
+          "expectedLines": "2",
+          "showMathInput": true
         }
       },
       "minimumWidth": 100
