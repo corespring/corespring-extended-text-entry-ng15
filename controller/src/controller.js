@@ -4,12 +4,52 @@
  * https://pielabs.github.io/pie-docs/developing/controller.html
  */
 
+let feedback = {
+  NO_ANSWER: 'You did not enter a response'
+};
+
+let getFeedback = (question) => {
+  var fb = question.feedback || {feedbackType: "default"};
+  var feedbackType = fb.feedbackType || "default";
+  if (feedbackType === "custom") {
+    return question.feedback.feedback;
+  } else if (feedbackType === "default") {
+    return "Your answer was successfully submitted.";
+  }
+};
+
 let createOutcome = (question, session) => {
-  return {score:1}
-}
+  let settings = {
+    showFeedback: true
+  };
+
+  if (!session) {
+    return {
+      correctness: 'incorrect',
+      correctClass: 'nothing-submitted',
+      score: 0,
+      feedback: settings.showFeedback ? feedback.NO_ANSWER : null
+    };
+  }
+
+  if (question && session && question._uid !== session._uid) {
+    throw "Error - the uids must match";
+  }
+
+  var response = {
+    studentResponse: session.value.answers
+  };
+
+  if (settings.showFeedback) {
+    response.feedback = getFeedback(question);
+  }
+  response.comments = question.comments;
+
+  return response;
+};
 
 export function outcome(question, session, env) {
-  const legacyOutcome = createOutcome(question, session)
+  const legacyOutcome = createOutcome(question, session, env)
   const raw = legacyOutcome.score;
   const min = 0;
   const max = 1;
